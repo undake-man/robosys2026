@@ -8,74 +8,50 @@ def analyze_text(text: str) -> dict[str, int]:
 
     characters = len(text)
 
-    characters_without_whitespace = sum(
-        not char.isspace() for char in text
-    )
+    characters_without_whitespace = sum(not char.isspace() for char in text)
 
     lines = len(text.splitlines())
 
-    paragraphs = sum(
-        1 for block in re.split(
-            r"(?:\r?\n)[ \t]*(?:\r?\n)+", text
-        )
-        if block.strip()
-    )
+    paragraphs = sum(1 for block in re.split(r"(?:\r?\n)[ \t]*(?:\r?\n)+", text)if block.strip())
 
-    sentences = len(
-        re.findall(r"[。！？!?]+|(?<!\d)\.(?=\s|$)", text)
-    )
+    sentences = len(re.findall(r"[。！？!?]+|(?<!\d)\.(?=\s|$)", text))
 
-    return {
-        "characters": characters,
-        "characters_without_whitespace": characters_without_whitespace,
-        "lines": lines,
-        "paragraphs": paragraphs,
-        "sentences": sentences,
-    }
+    return {"characters": characters,"characters_without_whitespace": characters_without_whitespace,"lines": lines,"paragraphs": paragraphs,"sentences": sentences,}
 def build_parser():
-    parser = argparse.ArgumentParser(
-        prog="text-counter",
-        description="Count characters, lines, paragraphs, and sentences."
-    )
+    parser = argparse.ArgumentParser(prog="text-counter",description="Count characters, lines, paragraphs, and sentences.")
 
-    parser.add_argument(
-        "file",
-        help="Path to the UTF-8 text file"
-    )
+    parser.add_argument("file",help="Path to the UTF-8 text file")
 
-    parser.add_argument(
-        "--target",
-        type=int,
-        default=None,
-        help="Target character count"
-    )
+    parser.add_argument("--target",type=int,default=None,help="Target character count")
 
     return parser
 def main(argv=None):
-    parser = build_parser()
+    parser = build_parser(),
     args = parser.parse_args(argv)
 
     if args.target is not None and args.target <= 0:
-        print(
-            "Error: --target must be a positive integer.",
-            file=sys.stderr
-        )
+        print("Error: --target must be a positive integer.",file=sys.stderr)
         return 2
     path = Path(args.file)
 
-    try:
-        text = path.read_text(encoding="utf-8")
+    try:text = path.read_text(encoding="utf-8")
 
     except FileNotFoundError:
         print(f"Error: file not found: {path}", file=sys.stderr)
         return 1
     except UnicodeDecodeError:
-        print(
-            f"Error: {path} is not a valid UTF-8 text file.",
-            file=sys.stderr
-        )
+        print(f"Error: {path} is not a valid UTF-8 text file.",file=sys.stderr)
         return 1
     except OSError as exc:
         print(f"Error: cannot read {path}: {exc}", file=sys.stderr)
         return 1
 
+    result = analyze_text(text)
+
+    print("Text Counter")
+    print("-------------------------")
+    print(f"Characters: {result['characters']}")
+    print("Characters (without whitespace): "f"{result['characters_without_whitespace']}")
+    print(f"Lines: {result['lines']}")
+    print(f"Paragraphs: {result['paragraphs']}")
+    print(f"Sentences: {result['sentences']}")
