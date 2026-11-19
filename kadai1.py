@@ -32,3 +32,22 @@ def analyze_text(text: str) -> dict[str, int]:
         "paragraphs": paragraphs,
         "sentences": sentences,
     }
+def build_parser():
+    parser = argparse.ArgumentParser(
+        prog="text-counter",
+        description="Count characters, lines, paragraphs, and sentences."
+    )
+
+    parser.add_argument(
+        "file",
+        help="Path to the UTF-8 text file"
+    )
+
+    parser.add_argument(
+        "--target",
+        type=int,
+        default=None,
+        help="Target character count"
+    )
+
+    return parser
