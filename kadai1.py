@@ -75,3 +75,7 @@ def main(argv=None):
             file=sys.stderr
         )
         return 1
+    except OSError as exc:
+        print(f"Error: cannot read {path}: {exc}", file=sys.stderr)
+        return 1
+
