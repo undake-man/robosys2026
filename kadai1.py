@@ -69,3 +69,9 @@ def main(argv=None):
     except FileNotFoundError:
         print(f"Error: file not found: {path}", file=sys.stderr)
         return 1
+    except UnicodeDecodeError:
+        print(
+            f"Error: {path} is not a valid UTF-8 text file.",
+            file=sys.stderr
+        )
+        return 1
