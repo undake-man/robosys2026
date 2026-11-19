@@ -61,3 +61,11 @@ def main(argv=None):
             file=sys.stderr
         )
         return 2
+    path = Path(args.file)
+
+    try:
+        text = path.read_text(encoding="utf-8")
+
+    except FileNotFoundError:
+        print(f"Error: file not found: {path}", file=sys.stderr)
+        return 1
