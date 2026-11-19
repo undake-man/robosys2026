@@ -62,3 +62,9 @@ def main(argv=None):
         print()
         print(f"Target: {args.target} characters")
         print(f"Progress: {progress:.2f}%")
+        if result["characters"] >= args.target:
+            print("Status: Target achieved!")
+        else:remaining = args.target - result["characters"]
+            print(f"Status: {remaining} characters remaining.")
+
+    return 0
