@@ -55,3 +55,9 @@ def main(argv=None):
     parser = build_parser()
     args = parser.parse_args(argv)
 
+    if args.target is not None and args.target <= 0:
+        print(
+            "Error: --target must be a positive integer.",
+            file=sys.stderr
+        )
+        return 2
