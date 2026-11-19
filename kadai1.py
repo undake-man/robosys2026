@@ -55,3 +55,10 @@ def main(argv=None):
     print(f"Lines: {result['lines']}")
     print(f"Paragraphs: {result['paragraphs']}")
     print(f"Sentences: {result['sentences']}")
+    if args.target is not None:
+
+        progress = result["characters"] / args.target * 100
+
+        print()
+        print(f"Target: {args.target} characters")
+        print(f"Progress: {progress:.2f}%")
