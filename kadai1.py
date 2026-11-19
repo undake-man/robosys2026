@@ -25,3 +25,10 @@ def analyze_text(text: str) -> dict[str, int]:
         re.findall(r"[。！？!?]+|(?<!\d)\.(?=\s|$)", text)
     )
 
+    return {
+        "characters": characters,
+        "characters_without_whitespace": characters_without_whitespace,
+        "lines": lines,
+        "paragraphs": paragraphs,
+        "sentences": sentences,
+    }
