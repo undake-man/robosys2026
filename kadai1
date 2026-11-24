@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+# SPDX-FileCopyrightText: 2026 Koki Goto
+#SPDX-License-Identifier:BSD-3-Clause
 #レポートや課題の文章の文字数（空白を除く）や行数、段落数などを確認するコマンド
 import re
 # ファイルの読み込み
