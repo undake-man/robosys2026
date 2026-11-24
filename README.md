@@ -1,19 +1,4 @@
 # robosys2026
-##著作権とlicense
-このソフトウェアパッケージは、3条項BSDライセンスの下、再頒布および使用が許可されます。
-- このパッケージは、aaa由来のコード（© 2025 Hoge Fuge）を利用しています。
-- このパッケージのコードは、下記のスライド（CC BY-SA 4.0 by Taro Suzuki）のものを、
-  本人の許可を得て自身の著作としたものです。
-    - https://github.com/tarolab-cit/lectures/tree/main/robosys2026
-- © 2026 Koki Goto
-# plusコマンド
-![test](https://github.com/undake-man/robosys2026/actions/workflows/test.yml/badge.svg)
-↑ テスト結果を反映したバッジの画像が埋め込まれる（<ユーザ名>は各自変更を）
-
-標準入力から読み込んだ数字を足す。
-
-（ここに前ページの項目をいろいろ書く）
-
 ## 必要なソフトウェア
 - Python
   - テスト済みバージョン: 3.10〜3.14
@@ -21,6 +6,32 @@
 ## テスト環境
 - Ubuntu 24.04 LTS
 
+##使い方
+リポジトリをダウンロードします。
+
+git clone https://github.com/undake-man/robosys2026.git
+
+ディレクトリに移動します。
+
+cd robosys2026
+
+プログラムを実行します。
+
+python3 kadai1
+
+表示された入力欄に、読み込みたい文章ファイルの名前を入力してください。
+
+読み込むファイル名を入力してください：test.txt
+
+ファイルが正常に読み込まれると、次の項目が表示されます。
+
+空白を除いた文字数
+
+行数
+
+段落数
+
+文数
 ## ライセンス
 - このソフトウェアパッケージは、3条項BSDライセンスの下、再頒布および使用が許可されます。
 - © 2026 Koki Goto
